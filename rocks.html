@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of Rocks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e9ecef;
+            color: #333;
+            display: flex;
+            background-image: url('rocks background.png'); 
+            background-size:100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px;
+            font-size: 2.5em;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rock-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .rock-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .rock-card.igneous { border: 3px solid #dc143c; } 
+        .rock-card.metamorphic { border: 3px solid #4682b4; } 
+        .rock-card.sedimentary { border: 3px solid #ffd700; } 
+
+        .plant {
+            width: 80px;
+            position: absolute;
+            top: 65px;
+            bottom: 2;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: grow 1s ease forwards;
+            opacity: 0; 
+        }
+
+        .info {
+            display: none;
+            margin-top: 15px;
+            background: #e2e2e2;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        input[type="checkbox"] {
+            display: none; 
+        }
+
+        input[type="checkbox"]:checked ~ .info {
+            display: block; 
+        }
+
+        @keyframes grow {
+            from {
+                height: 0;
+                opacity: 0;
+            }
+            to {
+                height: 50px;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .rock-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Types of Rocks</h1>
+    <div class="container">
+        <label class="rock-card igneous">
+            <input type="checkbox">
+            <h2>Igneous Rock</h2>
+            <img class="plant" src="Igneous Rock.png" alt="Growing Plant" style="height: 100px; width: 80px;">
+            <div class="info">
+                <p>Igneous rocks are formed from the cooling and solidification of magma or lava.</p>
+                <p><strong>Examples:</strong> Granite, Basalt</p>
+            </div>
+        </label>
+        <label class="rock-card metamorphic">
+            <input type="checkbox">
+            <h2>Metamorphic Rock</h2>
+            <img class="plant" src="Metamorphic Rock.png" alt="Growing Plant">
+            <div class="info">
+                <p>Metamorphic rocks are formed from existing rocks that are transformed by heat, pressure, or chemically.</p>
+                <p><strong>Examples:</strong> Schist, Gneiss</p>
+            </div>
+        </label>
+        <label class="rock-card sedimentary">
+            <input type="checkbox">
+            <h2>Sedimentary Rock</h2>
+            <img class="plant" src="Sedimentary Rock.png" alt="Growing Plant">
+            <div class="info">
+                <p>Sedimentary rocks are formed by the accumulation and compaction of mineral and organic particles.</p>
+                <p><strong>Examples:</strong> Sandstone, Limestone</p>
+            </div>
+        </label>
+    </div>
+</body>
+</html>

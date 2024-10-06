@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Learning Roadmap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background-image: url('roadmap.png'); 
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            position: relative;
+            width: 80%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        h1 {
+            margin: 20px;
+            font-size: 2.5em;
+            color: #ff00f2;
+        }
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 25px;
+            margin: 20px 0;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            animation: fadeIn 2s ease;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #ff00f2;
+            border-radius: 25px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            transition: width 1s ease-in-out;
+        }
+        .roadmap {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            animation: fadeIn 2s ease;
+        }
+        .path {
+            position: absolute;
+            width: calc(100% - 140px);
+            height: 5px;
+            background: transparent;
+            border-top: 2px dotted #ffcc00;
+            top: 50%; 
+            transform: translateY(-50%);
+            z-index: -1;
+            left: 70px; 
+            animation: pathAnimation 1s ease-in-out;
+        }
+        .level {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #ffcc00;
+            border-radius: 10px;
+            background: rgba(255, 204, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+            position: relative;
+            animation: bounce 2s infinite;
+        }
+        .level:hover {
+            transform: scale(1.1);
+            background: rgba(255, 204, 0, 0.7);
+        }
+        .bird {
+            position: absolute;
+            width: 76px;
+            bottom: 65px; 
+            transition: transform 2s ease;
+            display: none;
+          
+        }
+        .thought-bubble {
+            position: absolute;
+            bottom: 95px;
+            background-color: white;
+            color: #ff00f2;
+            padding: 10px;
+            border-radius: 10px;
+            width: 200px;
+            transform: translateX(-50%);
+            display: none;
+            z-index: 10;
+            animation: fadeIn 1s ease;
+        }
+        img.logo {
+            position: absolute;
+            top: -140px;
+            left: 520px;
+            width: 140px;
+        }
+        a {
+            text-decoration: none;
+            color: rgb(226, 98, 43);
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 1000;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+       
+        @keyframes pathAnimation {
+            0% {
+                transform: translate(-50%, -50%) scaleX(0);
+            }
+            100% {
+                transform: translate(-50%, -50%) scaleX(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.jpg" alt="Logo" class="logo">
+        <h1><b>Kids Learning Roadmap</b></h1>
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar">0%</div>
+        </div>
+        <div class="roadmap">
+            <div class="path"></div>
+            <div class="level"><a href="typesofsoil.html?level=1" onclick="saveLevel(1)">Level 1</a></div>
+            <div>1<h4 style="color: rgb(13, 112, 251);">1.Soil</h4></div>
+            <div class="path" style="left: 70px;"></div>
+            <div class="level"><a href="rocks.html?level=2" onclick="saveLevel(2)">Level 2</a></div>
+            <div>1<h4 style="color:  rgb(13, 112, 251);">2.Rocks</h4></div>
+            <div class="path" style="left: 50px;"></div>
+            <div class="level"><a href="liquid.html?level=3" onclick="saveLevel(3)">Level 3</a></div>
+            <div>1<h4 style="color: rgb(13, 112, 251);">3.Liquids</h4></div>
+            <div class="path" style="left: 70px;"></div>
+            <div class="level"><a href="gas.html?level=4" onclick="saveLevel(4)">Level 4</a></div>
+            <div>1<h4 style="color:  rgb(13, 112, 251);">4.Gas</h4></div>
+        </div>
+        <img class="bird" id="bird" src="bird.png" alt="Bird" />
+        <div class="thought-bubble" id="thoughtBubble">Congratulations! You completed the previous level. Now click to complete Level X.</div>
+    </div>
+    <script>
+        let currentLevel = localStorage.getItem('currentLevel') ? parseInt(localStorage.getItem('currentLevel')) : 0;
+        const progressBar = document.getElementById('progressBar');
+        function saveLevel(level) {
+            localStorage.setItem('currentLevel', level); 
+        }
+
+        
+
+        function startLevel(level) {
+            if (level === currentLevel) {
+                const bird = document.getElementById('bird');
+                const thoughtBubble = document.getElementById('thoughtBubble');
+                thoughtBubble.innerText = `Congratulations! You completed the previous level. Now click to complete Level ${level}.`;
+                bird.style.display = 'block'; 
+                bird.style.transform = `translateX(${(level - 1) * 150}px)`;
+                bird.style.animation = "fly 2s forwards";
+                thoughtBubble.style.display = 'block';
+                setTimeout(() => {
+                    thoughtBubble.style.left = `${(level - 1) * 150}px`;
+                }, 500); 
+                thoughtBubble.style.animation = "fly 2s forwards";
+                updateProgress(level);
+
+                const path = document.querySelector('.path');
+                path.style.animation = "pathAnimation 2s forwards";
+
+                setTimeout(() => {
+                    if (currentLevel < 4) {
+                        alert(`Great job! Level ${level} completed. Click Level ${currentLevel + 1} to continue!`);
+                    } else {
+                        alert("Congratulations! You completed all levels!");
+                    }
+                }, 2000); 
+            } else {
+                alert("Complete the previous level first!");
+            }
+        }
+        function updateProgress(level) {
+            let progress = 0;
+            switch (level) {
+                case 1:
+                    progress = 10;
+                    break;
+                case 2:
+                    progress = 50;
+                    break;
+                case 3:
+                    progress = 75;
+                    break;
+                case 4:
+                    progress = 100;
+                    break;
+            }
+            progressBar.style.width = progress + '%';
+            progressBar.innerText = progress + '%';
+            if(progress == 50){
+                alert(`Great job! Level ${level} completed. Click Level ${currentLevel + 1} to continue!`);
+            }
+            else if(progress == 75){
+                alert(`Great job! Level ${level} completed. Click Level ${currentLevel + 1} to continue!`);
+            }
+            else if(progress == 100){
+                alert("Congratulations! You completed all levels!");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const level = parseInt(urlParams.get('level'));
+            if (level && level === currentLevel + 1) {
+                startLevel(level);
+            }
+
+            if (currentLevel > 0) {
+                const bird = document.getElementById('bird');
+                bird.style.display = 'block'; 
+                bird.style.transform = `translateX(${(currentLevel - 1) * 310}px)`;
+                updateProgress(currentLevel);
+            }
+        });
+    </script>
+</body>
+</html>

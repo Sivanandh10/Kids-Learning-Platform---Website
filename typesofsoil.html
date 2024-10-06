@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of Soil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e9ecef;
+            color: #333;
+            display: flex;
+            background-image: url('typessoil.png'); 
+            background-size:100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px;
+            font-size: 2.5em;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .soil-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .soil-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .soil-card.clay { border: 3px solid #8B4513; }
+        .soil-card.sandy { border: 3px solid #D8B000; }
+        .soil-card.loamy { border: 3px solid #228B22; }
+        .soil-card.silty { border: 3px solid #A0522D; }
+        .soil-card.peaty { border: 3px solid #2E8B57; }
+
+        .plant {
+            width: 80px;
+            position: absolute;
+            top: 65px;
+            bottom: 2;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: grow 1s ease forwards;
+            opacity: 0; 
+        }
+
+        .info {
+            display: none;
+            margin-top: 15px;
+            background: #e2e2e2;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        input[type="checkbox"] {
+            display: none; 
+        }
+
+        input[type="checkbox"]:checked ~ .info {
+            display: block; 
+        }
+
+        @keyframes grow {
+            from {
+                height: 0;
+                opacity: 0;
+            }
+            to {
+                height: 50px;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .soil-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #7d0be7; background-color: whitesmoke; font-weight: 1000;">Types of Soil</h1>
+    <div class="container">
+        <label class="soil-card clay">
+            <input type="checkbox">
+            <h2>Clay Soil</h2>
+            <img class="plant" src="clay.png" alt="Growing Plant">
+            <div class="info">
+                <p>Clay soil is dense and rich in nutrients but drains poorly. It's ideal for specific plants and usually dries out hard.</p>
+                <p><strong>Nutrient Content:</strong> Nitrogen: 0.20%, Phosphorus: 0.05%, Potassium: 0.15%</p>
+            </div>
+        </label>
+        <label class="soil-card sandy">
+            <input type="checkbox">
+            <h2>Sandy Soil</h2>
+            <img class="plant" src="sandy.png" alt="Growing Plant">
+            <div class="info">
+                <p>Sandy soil has larger particles and drains quickly, making it low in nutrients.</p>
+                <p><strong>Nutrient Content:</strong> Nitrogen: 0.10%, Phosphorus: 0.03%, Potassium: 0.04%</p>
+            </div>
+        </label>
+        <label class="soil-card loamy">
+            <input type="checkbox">
+            <h2>Loamy Soil</h2>
+            <img class="plant" src="loamy.png" alt="Growing Plant">
+            <div class="info">
+                <p>Loamy soil is a balanced mix of clay, silt, and sand, making it ideal for growing crops and vegetables.</p>
+                <p><strong>Nutrient Content:</strong> Nitrogen: 0.25%, Phosphorus: 0.07%, Potassium: 0.20%</p>
+            </div>
+        </label>
+        <label class="soil-card silty">
+            <input type="checkbox">
+            <h2>Silty Soil</h2>
+            <img class="plant" src="slit.png" alt="Growing Plant">
+            <div class="info">
+                <p>Silty soil is smooth and holds moisture well but can become compacted easily.</p>
+                <p><strong>Nutrient Content:</strong> Nitrogen: 0.30%, Phosphorus: 0.05%, Potassium: 0.10%</p>
+            </div>
+        </label>
+        <label class="soil-card peaty">
+            <input type="checkbox">
+            <h2>Peaty Soil</h2>
+            <img class="plant" src="peaty.png" alt="Growing Plant">
+            <div class="info">
+                <p>Peaty soil is dark, rich in organic matter, and retains moisture well, but it can be acidic.</p>
+                <p><strong>Nutrient Content:</strong> Nitrogen: 0.60%, Phosphorus: 0.08%, Potassium: 0.05%</p>
+            </div>
+        </label>
+    </div>
+</body>
+</html>

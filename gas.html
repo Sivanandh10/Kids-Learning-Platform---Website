@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of Gases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e9ecef;
+            color: #333;
+            display: flex;
+            background-image: url('gas bg.png'); 
+            background-size:100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            margin: 20px;
+            font-size: 2.5em;
+            animation: fadeIn 1s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .gas-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .gas-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .gas-card.oxygen { border: 3px solid #1E90FF; }
+        .gas-card.nitrogen { border: 3px solid #32CD32; }
+        .gas-card.carbon-dioxide { border: 3px solid #FF4500; }
+        .plant {
+            width: 80px;
+            position: absolute;
+            top: 65px;
+            bottom: 2;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: grow 1s ease forwards;
+            opacity: 0; 
+        }
+        .info {
+            display: none;
+            margin-top: 15px;
+            background: #e2e2e2;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        input[type="checkbox"] {
+            display: none;
+        }
+        input[type="checkbox"]:checked ~ .info {
+            display: block;
+        }
+        @keyframes grow {
+            from {
+                height: 0;
+                opacity: 0;
+            }
+            to {
+                height: 50px;
+                opacity: 1;
+            }
+        }
+        @media (max-width: 600px) {
+            .gas-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Types of Gases</h1>
+    <div class="container">
+        <label class="gas-card oxygen">
+            <input type="checkbox">
+            <h2>Oxygen</h2>
+            <img class="plant" src="oxygen.png" alt="Growing Plant">
+            <div class="info">
+                <p>Oxygen is a colorless, odorless gas essential for respiration in most living organisms.</p>
+                <p><strong>Uses:</strong> Respiration, combustion, and medical applications.</p>
+            </div>
+        </label>
+        <label class="gas-card nitrogen">
+            <input type="checkbox">
+            <h2>Nitrogen</h2>
+            <img class="plant" src="nitrogen.png" alt="Growing Plant">
+            <div class="info">
+                <p>Nitrogen is a colorless, odorless gas that makes up about 78% of the Earth's atmosphere.</p>
+                <p><strong>Uses:</strong> Fertilizers, food preservation, and as an inert atmosphere in chemical processes.</p>
+            </div>
+        </label>
+        <label class="gas-card carbon-dioxide">
+            <input type="checkbox">
+            <h2>Carbon Dioxide</h2>
+            <img class="plant" src="co2.png" alt="Growing Plant">
+            <div class="info">
+                <p>Carbon dioxide is a colorless gas produced by the respiration of animals and plants.</p>
+                <p><strong>Uses:</strong> Photosynthesis, carbonation of beverages, and as a refrigerant.</p>
+            </div>
+        </label>
+    </div>
+</body>
+</html>

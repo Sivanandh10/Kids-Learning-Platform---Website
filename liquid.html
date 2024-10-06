@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of Liquids</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #e9ecef;
+            color: #333;
+            display: flex;
+            background-image: url('liquid bg.png'); 
+            background-size:100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px;
+            font-size: 2.5em;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .liquid-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .liquid-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .liquid-card.water { border: 3px solid #1E90FF; } 
+        .liquid-card.oil { border: 3px solid #FFD700; } 
+        .liquid-card.alcohol { border: 3px solid #FF4500; } 
+
+        .plant {
+            width: 80px;
+            position: absolute;
+            top: 65px;
+            bottom: 2;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: grow 1s ease forwards;
+            opacity: 0; 
+        }
+
+        .info {
+            display: none;
+            margin-top: 15px;
+            background: #e2e2e2;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        input[type="checkbox"] {
+            display: none; 
+        }
+
+        input[type="checkbox"]:checked ~ .info {
+            display: block; 
+        }
+
+        @keyframes grow {
+            from {
+                height: 0;
+                opacity: 0;
+            }
+            to {
+                height: 50px;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .liquid-card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #f59643;">Types of Liquids</h1>
+    <div class="container">
+        <label class="liquid-card water">
+            <input type="checkbox">
+            <h2>Water</h2>
+            <img class="plant" src="water.png" alt="Growing Plant">
+            <div class="info">
+                <p>Water is a colorless, odorless, and tasteless liquid that is essential for all living organisms.</p>
+                <p><strong>Uses:</strong> Drinking, cooking, cleaning, and agriculture.</p>
+            </div>
+        </label>
+        <label class="liquid-card oil">
+            <input type="checkbox">
+            <h2>Oil</h2>
+            <img class="plant" src="oil.png" alt="Growing Plant">
+            <div class="info">
+                <p>Oil is a viscous liquid derived from plants or petroleum, used for cooking and lubrication.</p>
+                <p><strong>Types:</strong> Olive oil, vegetable oil, motor oil.</p>
+            </div>
+        </label>
+        <label class="liquid-card alcohol">
+            <input type="checkbox">
+            <h2>Alcohol</h2>
+            <img class="plant" src="alchol.png" alt="Growing Plant">
+            <div class="info">
+                <p>Alcohol is a colorless volatile liquid that is made by the fermentation of sugars, commonly used in beverages.</p>
+                <p><strong>Types:</strong> Ethanol (drinking), Methanol (industrial), Isopropyl alcohol (antiseptic).</p>
+            </div>
+        </label>
+    </div>
+</body>
+</html>
